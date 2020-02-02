@@ -10,10 +10,8 @@ import funciones
 #Extracting the information from the web page.
 res = requests.get("https://en.wikipedia.org/wiki/List_of_cryptocurrencies")
 soup = BeautifulSoup(res.text, 'html.parser')
-
 datos=soup.find_all('table')[0]
 datos.find_all('tr')[1].find_all("td")[0]
-
 wiki=funciones.createDF(datos)
 clean_wiki = funciones.quitarBrackets(wiki)
 clean_wiki=funciones.changeWiki(wiki)
@@ -29,13 +27,15 @@ funciones.Casting(final_table)
 #Exporting the file.
 final_table.to_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/OUTPUT/final_table.csv")
 
-#Graphics
+#Historical graphic - Shows all the 'Close Prices' from 2013 to 2019
 funciones.graphic(final_table)
 
-funciones.variation(final_table).plot.line()
+#S. Desviation graphic - Shows the variation rate for each day.
+funciones.variation(final_table).plot.bar()
 plt.gcf().set_size_inches(10,10)
 plt.show()
 
+#Shows Gauss(%), mean, std,... for each currency.
 describeDatos=funciones.describe(final_table)
 
 print('INFORMACION SOBRE LAS MONEDAS:')
