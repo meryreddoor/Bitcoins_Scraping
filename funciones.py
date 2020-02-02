@@ -67,7 +67,7 @@ def Casting(final_table):
 
 
 def graphic(final_table):
-    fig, ax = plt.subplots()
+    fig,ax = plt.subplots()
     for label, grp in final_table.groupby('Currency'):
         a=grp.plot(x = 'Date', y = 'Close',ax = ax,label = label)
     plt.gcf().set_size_inches(30, 10)
