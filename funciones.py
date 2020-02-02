@@ -76,7 +76,7 @@ def graphic(final_table):
 
 
 def variation(final_table):
-    var_rate = final_table.sort_values('Date').set_index('Date').groupby('Currency').apply(lambda x: x['Close'].pct_change())
+    var_rate = final_table.sort_values('Date').set_index('Date').groupby('Currency').apply(lambda x: x['Close'].std())
     return var_rate.T
 
 def describe(final_table):
