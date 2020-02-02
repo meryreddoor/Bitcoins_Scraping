@@ -44,6 +44,7 @@ print('\n')
 print('-------------------------------------------------------------')
 
 print('SELECCIONA LOS DATOS QUE QUIERES VER:')
+print('\n')
 x = input(str('Introduce una moneda: '))
 y=input(str('Introduce un año AAAA-MM-DD: '))
 
