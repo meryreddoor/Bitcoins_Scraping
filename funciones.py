@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import matplotlib
 import matplotlib.pyplot as plt
 
+
 def createDF(table):
     
     headers = [header.text[:-1] for header in table.find_all('th')]
