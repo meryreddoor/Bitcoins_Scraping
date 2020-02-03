@@ -1,63 +1,56 @@
-import re
+import funciones
+import argparse
 import pandas as pd
-import requests
-import numpy as np
-from bs4 import BeautifulSoup
 import matplotlib
 import matplotlib.pyplot as plt
-import funciones
 
-#Extracting the information from the web page.
-res = requests.get("https://en.wikipedia.org/wiki/List_of_cryptocurrencies")
-soup = BeautifulSoup(res.text, 'html.parser')
-datos=soup.find_all('table')[0]
-datos.find_all('tr')[1].find_all("td")[0]
-wiki=funciones.createDF(datos)
-clean_wiki = funciones.quitarBrackets(wiki)
-clean_wiki=funciones.changeWiki(wiki)
+def parser():
+    parser = argparse.ArgumentParser(description='Selecciona los datos que quieres ver')
+    parser.add_argument('x', type=str, help='Moneda Seleccionada')
+    parser.add_argument('y', type=str,help='Fecha')
+    args = parser.parse_args()
+    return args
 
-#Extracting information from Kaggle
-historical_data = pd.read_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/INPUT/consolidated_coin_data.csv",encoding='latin1')
-clean_kaggle=funciones.changeKaggle(historical_data)
+def main():
+    args = parser()
+    x,y = args.x, args.y
+    df = pd.read_csv("OUTPUT/final_table.csv")
+    filter_df=info(df,x,y)
+    #Historical graphic - Shows all the 'Close Prices' from 2013 to 2019
+    funciones.graphic(df)
+    #S. Desviation graphic - Shows the variation rate for each day.
+    funciones.variation(df).plot.bar()
+    plt.gcf().set_size_inches(10,10)
+    plt.show()
+    
+    
 
-#Merging both files
-final_table=funciones.merging(clean_wiki, clean_kaggle)
-funciones.Casting(final_table)
 
-#Exporting the file.
-final_table.to_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/OUTPUT/final_table.csv")
+def info(table,x,y):
+    
+    filter_table=monedaFecha(table,x,y)
+    print('-------------------------------------------------------------')
+    print('\n')
+    print(f"Características moneda {x} a fecha {y}")
+    print('\n')
+    print(filter_table)
+    print('\n')
+    print('-------------------------------------------------------------')
+    print('\n')
+    print(f'Medias Historicas de {x}')
+    print('\n')
+    print(table.groupby(['Currency']).get_group(x).mean())
+    print('\n')
+    print('-------------------------------------------------------------')
+    print('\n')
+    print('PRECIO DE CIERRE DE LAS MONEDAS EN MEDIAS, D.STA, GAUSS..')
+    print('\n')
+    print(funciones.describe(table))
+    return filter_table
 
-#Historical graphic - Shows all the 'Close Prices' from 2013 to 2019
-funciones.graphic(final_table)
+def monedaFecha(final_table,x,y):
+    filter_table=funciones.descriptions(final_table, x, y)
+    return filter_table
 
-#S. Desviation graphic - Shows the variation rate for each day.
-funciones.variation(final_table).plot.bar()
-plt.gcf().set_size_inches(10,10)
-plt.show()
-
-#Shows Gauss(%), mean, std,... for each currency.
-describeDatos=funciones.describe(final_table)
-
-print('INFORMACION SOBRE LAS MONEDAS:')
-print(describeDatos)
-print('\n')
-print('-------------------------------------------------------------')
-
-print('SELECCIONA LOS DATOS QUE QUIERES VER:')
-print('\n')
-x = input(str('Introduce una moneda: '))
-y=input(str('Introduce un año AAAA-MM-DD: '))
-
-filter_table=funciones.descriptions(final_table, x, y)
-
-print('-------------------------------------------------------------')
-print('\n')
-print(f"Características moneda {x} a fecha {y}")
-print('\n')
-print(filter_table)
-print('\n')
-print('-------------------------------------------------------------')
-print('\n')
-print(f'Medias Historicas de {x}')
-print('\n')
-print(final_table.groupby(['Currency']).get_group(x).mean())
+if __name__ == '__main__':
+    main()
