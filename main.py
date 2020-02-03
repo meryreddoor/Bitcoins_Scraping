@@ -23,8 +23,6 @@ def main():
     plt.gcf().set_size_inches(10,10)
     plt.show()
     
-    
-
 
 def info(table,x,y):
     
@@ -37,13 +35,13 @@ def info(table,x,y):
     print('\n')
     print('-------------------------------------------------------------')
     print('\n')
-    print(f'Medias Historicas de {x}')
+    print(f'CAPITALIZACION BURSATIL: Media Historica de {x} (Desde 2013 a 2019)')
     print('\n')
-    print(table.groupby(['Currency']).get_group(x).mean())
+    print(table.groupby(['Currency']).get_group(x).mean()[3:4])
     print('\n')
     print('-------------------------------------------------------------')
     print('\n')
-    print('PRECIO DE CIERRE DE LAS MONEDAS EN MEDIAS, D.STA, GAUSS..')
+    print('PRECIO DE CIERRE DE TODAS MONEDAS EN MEDIAS, D.STA, GAUSS..')
     print('\n')
     print(funciones.describe(table))
     return filter_table

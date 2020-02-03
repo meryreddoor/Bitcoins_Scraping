@@ -26,10 +26,3 @@ funciones.Casting(final_table)
 
 #Exporting the file.
 final_table.to_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/OUTPUT/final_table.csv")
-
-
-print('INFORMACION SOBRE LAS MONEDAS:')
-print(describeDatos)
-print('\n')
-print('-------------------------------------------------------------')
-
