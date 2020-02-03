@@ -22,8 +22,8 @@ def main():
     funciones.variation(df).plot.bar()
     plt.gcf().set_size_inches(10,10)
     plt.show()
-    #Shows Gauss(%), mean, std,... for each currency.
-    describeDatos=funciones.describe(df)
+    
+    
 
 
 def info(table,x,y):
@@ -40,6 +40,12 @@ def info(table,x,y):
     print(f'Medias Historicas de {x}')
     print('\n')
     print(table.groupby(['Currency']).get_group(x).mean())
+    print('\n')
+    print('-------------------------------------------------------------')
+    print('\n')
+    print('PRECIO DE CIERRE DE LAS MONEDAS EN MEDIAS, D.STA, GAUSS..')
+    print('\n')
+    print(funciones.describe(table))
     return filter_table
 
 def monedaFecha(final_table,x,y):
