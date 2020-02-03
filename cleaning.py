@@ -17,7 +17,7 @@ clean_wiki = funciones.quitarBrackets(wiki)
 clean_wiki=funciones.changeWiki(wiki)
 
 #Extracting information from Kaggle
-historical_data = pd.read_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/INPUT/consolidated_coin_data.csv",encoding='latin1')
+historical_data = pd.read_csv("INPUT/consolidated_coin_data.csv",encoding='latin1')
 clean_kaggle=funciones.changeKaggle(historical_data)
 
 #Merging both files
@@ -25,4 +25,4 @@ final_table=funciones.merging(clean_wiki, clean_kaggle)
 funciones.Casting(final_table)
 
 #Exporting the file.
-final_table.to_csv("/Users/mariaroigporta/Ironhack/Bitcoins_Scraping/OUTPUT/final_table.csv")
+final_table.to_csv("OUTPUT/final_table.csv")
