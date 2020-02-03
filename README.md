@@ -1,10 +1,27 @@
-# Bitcoins_Scraping
+# Bitcoins Scraping
 
-One Paragraph of project description goes here
+
+The main purpose of this project is to analyze the Historical Data of several Cryptocurrencies:
+
+* Bitcoin
+* Stellar
+* Ether
+* Ethereum
+* Litecoin
+* EOS
+* Ripple
+
+Furthermore, the user will be able to choose a coin and also a concrete date, with this parameters, the user will get the exact Close Prices of the selected date, the description of the coin, the prog. laguanje,  the release year, the mean of the whole period (from 2013 to 2019), among other things.
+
+In order to do so, databases need to be cleaned. The process is described below.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+See deployment for notes on how to deploy the project on a live system:
+
+1. Run the folder *funciones.py*
+2. Run the folder *cleaning.py*
+3. Finally, run the folder *main.py*
 
 ### Prerequisites
 
@@ -22,55 +39,19 @@ import numpy as np
 from bs4 import BeautifulSoup
 ```
 
-## Running the tests
+### Data from Dataset folder
 
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
+### Data from Web Scrapping (Wikipedia)
 
 Explain what these tests test and why
 
-```
-Give an example
-```
+### Merge both folders
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
 * [Wikipedia](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) - The web framework used
 * [Kaggle](https://www.kaggle.com/philmohun/cryptocurrency-financial-data) - The Data set used.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc

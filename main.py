@@ -15,7 +15,7 @@ def main():
     args = parser()
     x,y = args.x, args.y
     df = pd.read_csv("OUTPUT/final_table.csv")
-    filter_df=info(df,x,y)
+    info(df,x,y)
     #Historical graphic - Shows all the 'Close Prices' from 2013 to 2019
     funciones.graphic(df)
     #S. Desviation graphic - Shows the variation rate for each day.
@@ -23,14 +23,13 @@ def main():
     plt.gcf().set_size_inches(10,10)
     plt.show()
     
-
 def info(table,x,y):
     
-    filter_table=monedaFecha(table,x,y)
     print('-------------------------------------------------------------')
     print('\n')
     print(f"Características moneda {x} a fecha {y}")
     print('\n')
+    filter_table=monedaFecha(table,x,y)
     print(filter_table)
     print('\n')
     print('-------------------------------------------------------------')
