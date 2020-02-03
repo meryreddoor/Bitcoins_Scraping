@@ -12,7 +12,7 @@ The main purpose of this project is to analyze the Historical Data of several Cr
 * Ripple
 
 Furthermore, the user will be able to choose a coin and a concrete date.
-With this parameters, the user will get the exact Close Prices for this exact day, and also, the description of the coin, the corresponding  prog. laguanje,  the year of the release, the mean of the whole period for the selected coin (from 2013 to 2019), Cap. Market.. among other things.
+With this parameters, the user will get the exact Close Prices for this exact day, and also, the description of the coin, the corresponding  prog. languaje,  the year of the release, the mean of the whole period for the selected coin (from 2013 to 2019), Cap. Market.. among other things.
 
 In order to do so, databases need to be cleaned. The process is described below.
 
@@ -47,7 +47,7 @@ Also, the table contains some elements should be removed, such as: *'['* and *']
 
 ### Merge both folders
 
-Once two folders will be cleaned, they will be merged with a function.
+Once the two folders are cleaned, they will be merged with a function.
 
 ### How to run the folders
 
