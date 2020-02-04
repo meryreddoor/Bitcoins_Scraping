@@ -23,7 +23,7 @@ In order to do so, databases need to be cleaned. The process is described below.
 In order to extract the information, we would need to input the following parameters:
 
 ```
-python3 main.py Coin Date(AAAA-MM-DD)
+python3 main.py Coin Date(YYYY-MM-DD)
 ```
 For instance:
 
