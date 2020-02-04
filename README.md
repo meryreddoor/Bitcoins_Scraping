@@ -33,7 +33,7 @@ python3 main.py Bitcoin 2019-12-02
 
 ### Files
 
-Libraries you would need to import for this analysis:
+Imported libraries:
 
 ```
 import funciones
